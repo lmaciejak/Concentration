@@ -10,7 +10,7 @@ class Concentration extends React.Component {
   constructor() {
     super();
     this.state = {
-      flippedOne: [], 
+      flippedOne: '', 
       flippedTwo: []
     };
     this.imagesArr = [{id: 1, type: 'apple'}, {id: 2, type: 'camera'}, {id: 3, type:'clover'}, {id: 4, type:'coffee'}, {id: 5, type:'heart'}, {id: 6, type:'key'}, {id: 7, type:'paw'}, {id: 8, type:'smiley'}, 
@@ -30,7 +30,20 @@ class Concentration extends React.Component {
     console.log('e.target', e.target)
     const image = e.target
     if(!flippedOne[0]){
+      console.log('first if ran')
       e.target.style.backgroundColor = "transparent"
+      this.setState({
+        flippedOne: e.target.name
+      })
+    } else {
+      e.target.style.backgroundColor = "transparent"
+      if(e.target.name !== flippedOne){
+        e.target.style.backgroundColor = "black"
+        console.log('this ran')
+        this.setState({
+          flippedOne: ''
+        })
+      }
     }
     // if (image.style.backgroundColor === "transparent"){ 
     //   image.style.backgroundColor = "black"
