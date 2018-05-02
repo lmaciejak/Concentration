@@ -26,14 +26,18 @@ class Concentration extends React.Component {
   }
 
   handleClick = (e) => { 
+    const { flippedOne } = this.state
     console.log('e.target', e.target)
     const image = e.target
-    if (image.style.backgroundColor === "transparent"){ 
-      image.style.backgroundColor = "black"
-    } else { 
-      image.style.backgroundColor = "transparent"
-      setTimeout(function () { image.style.backgroundColor = "black"; }, 2000)
+    if(!flippedOne[0]){
+      e.target.style.backgroundColor = "transparent"
     }
+    // if (image.style.backgroundColor === "transparent"){ 
+    //   image.style.backgroundColor = "black"
+    // } else { 
+    //   image.style.backgroundColor = "transparent"
+    //   setTimeout(function () { image.style.backgroundColor = "black"; }, 2000)
+    // }
   }
 
   render() {
