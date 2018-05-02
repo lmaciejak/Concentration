@@ -11,9 +11,9 @@ class Concentration extends React.Component {
     super();
     this.state = {
     };
-    this.imagesArr = ['apple', 'camera', 'clover', 'coffee', 'heart', 'key', 'paw', 'smiley', 
-    'snowflake', 'star', 'apple', 'camera', 'clover', 'coffee', 'heart', 'key', 
-    'paw', 'smiley', 'snowflake', 'star']
+    this.imagesArr = [{id: 1, type: 'apple'}, {id: 2, type: 'camera'}, {id: 3, type:'clover'}, {id: 4, type:'coffee'}, {id: 5, type:'heart'}, {id: 6, type:'key'}, {id: 7, type:'paw'}, {id: 8, type:'smiley'}, 
+    {id: 9, type:'snowflake'}, {id: 10, type:'star'}, {id: 11, type:'apple'}, {id: 12, type:'camera'}, {id: 13, type:'clover'}, {id: 14, type:'coffee'}, {id: 15, type:'heart'}, {id: 16, type:'key'}, 
+    {id: 17, type:'paw'}, {id: 18, type:'smiley'}, {id: 19, type:'snowflake'}, {id: 20, type:'star'}]
   }
                     
   shuffleArray(array) {
@@ -39,7 +39,7 @@ class Concentration extends React.Component {
         <h1>Concentration</h1>
         
         {this.shuffleArray(this.imagesArr).map(value => (
-          <img className="image" onClick={this.handleClick} name={value} src={`https://raw.githubusercontent.com/C4Q/AC_4_Web/master/units/react/exercises/objects_and_arrays/cards/${value}.png`}/>
+          <img className="image" onClick={this.handleClick} name={value} src={`https://raw.githubusercontent.com/C4Q/AC_4_Web/master/units/react/exercises/objects_and_arrays/cards/${value.type}.png`}/>
         ))}
       </div>
     );
