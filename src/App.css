@@ -26,9 +26,17 @@
 .image {
   width: 83px; 
   height: 83px; 
+  margin-left: 4px; 
 }
 
 .flipped { 
   width: 83px; 
   height: 83px; 
+  background-color: #D85564;
+  margin-left: 4px; 
+}
+
+h1 { 
+  font-family: 'Monda', sans-serif;
+  font-size: 40px; 
 }

@@ -96,11 +96,18 @@ class Concentration extends React.Component {
   };
 
   render() {
-    console.log("this.state", this.state);
+    let count = 0
+    for(var key in this.state){
+      if(key > 0 || key < 21){
+        if(this.state[key] === 'flipped'){ 
+          count += 1
+        }
+      }
+    }
     return (
       <div style={styles}>
         <h1>Concentration</h1>
-        {}
+        {count === 20 ? <h4> You won! </h4> : ''}
 
         {this.props.iconArr.map(
           value =>
@@ -112,7 +119,7 @@ class Concentration extends React.Component {
                 name={value.type}
                 width="82px"
                 height="82px"
-                src={`https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Black_card.svg/788px-Black_card.svg.png`}
+                src={`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQy9spedII5oOZSYIEh7D39ONoE_xrPmpmPgTeYPNQbkEVQKXEb`}
               />
             ) : (
               <img
