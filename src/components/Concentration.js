@@ -12,6 +12,8 @@ class Concentration extends React.Component {
     this.state = {
       flippedOneType: '', 
       flippedOneID: '',
+      flippedTwoType: '', 
+      flippedTwoID: '', 
       coffee: false,
       camera: false,
       clover: false,
@@ -51,52 +53,41 @@ class Concentration extends React.Component {
   }
 
   handleClick = (e) => { 
-    const { flippedOneType } = this.state
+    const { flippedOneType, flippedOneID } = this.state
     console.log('e.target', e.target)
     const image = e.target
     const imageID = image.id
-    this.setState({
-      [imageID]: 'flipped' 
-    })
-    // if(!flippedOneType[0]){
-    //   console.log('first if ran')
-    //   this.setState({
-    //     flippedOneType: image.name, 
-    //     flippedOneID: image.id,
-    //     [imageID]: 'flipped' 
-    //   })
-    // } else {
-    //   const image = e.target
-    //   console.log('flippedonetarget', this.state.flippedOneID)
-    //   if(e.target.name !== flippedOneType){
-    //     this.setState({
-    //       flippedOneType: '', 
-    //       flippedOneID: '',
-    //       [imageID]: '',
-
-    //     })
-    //     console.log('this ran')
-    //   }else { 
-    //     this.setState({
-    //       flippedOneType: '',
-    //       flippedOneID: '',
-    //     })
-    //   }
-    // }
-    
-    // if (image.style.backgroundColor === "transparent"){ 
-    //   image.style.backgroundColor = "black"
-    // } else { 
-    //   image.style.backgroundColor = "transparent"
-    //   setTimeout(function () { image.style.backgroundColor = "black"; }, 2000)
-    // }
+    if(!flippedOneID){
+      console.log('flippedONe is undefined')
+      this.setState({
+        [imageID]: 'flipped', 
+        flippedOneID: imageID, 
+        flippedOneType: image.name
+      })
+    } else { 
+      console.log('setting image to flipped')
+      this.setState({
+        [imageID]: 'flipped', 
+      })
+      if(image.name !== flippedOneType){
+        console.log('r')
+        setTimeout(function(){         
+          this.setState({
+          [imageID]: '', 
+          flippedOneID: '', 
+          flippedOneType: '', 
+          [flippedOneID]: ''
+        })}.bind(this), 3000);
+      }
+    }
   }
 
   render() {
-    console.log('flipped one', this.state.flippedOneType)
+    console.log('flipped one type', this.state.flippedOneType)
     console.log('flipped one id', this.state.flippedOneID)
     console.log('rerendered')
     console.log('props', this.state[this.props.iconArr[0].id])
+    console.log('this.state', this.state)
     return (
       <div style={styles}>
         <h1>Concentration</h1>
