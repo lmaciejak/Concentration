@@ -14,21 +14,7 @@ class Concentration extends React.Component {
       flippedOneID: '',
       flippedTwoType: '', 
       flippedTwoID: '', 
-      coffee: false,
-      camera: false,
-      clover: false,
-      key: false,
-      heart: false,
-      apple: false,
-      paw: false,
-      star: false,
-      smiley: false,
-      snowflake: false,
       gameWon: 0,
-      wrong: false,
-      firstFlip: "",
-      prevInd: 0,
-      deck: "", 
       1: '', 
       2: '', 
       3: '', 
@@ -75,7 +61,12 @@ console.log('first ran')
         flippedTwoType: image.name
       }, () => { 
         if(this.state.flippedTwoType === this.state.flippedOneType) { 
-          console.log('equal ran')
+          this.setState({
+            flippedOneID: '', 
+            flippedOneType: '', 
+            flippedTwoID: '', 
+            flippedTwoType: '', 
+          })
         }else { 
   console.log('images not equal')
   setTimeout(function(){         
