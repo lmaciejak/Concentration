@@ -10,28 +10,50 @@ class Concentration extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      flippedOne: '', 
-      flippedTwo: []
+      flippedOneType: '', 
+      flippedOneID: '',
+      coffee: false,
+      camera: false,
+      clover: false,
+      key: false,
+      heart: false,
+      apple: false,
+      paw: false,
+      star: false,
+      smiley: false,
+      snowflake: false,
+      gameWon: 0,
+      wrong: false,
+      firstFlip: "",
+      prevInd: 0,
+      deck: ""
     };
   }
 
   handleClick = (e) => { 
-    const { flippedOne } = this.state
+    const { flippedOneType } = this.state
     console.log('e.target', e.target)
     const image = e.target
-    if(!flippedOne[0]){
+    if(!flippedOneType[0]){
       console.log('first if ran')
       e.target.style.backgroundColor = "transparent"
       this.setState({
-        flippedOne: e.target.name
+        flippedOneType: e.target.name, 
+        flippedOneID: e.target.id
       })
     } else {
+      const image = e.target
+      console.log('flippedonetarget', this.state.flippedOneID)
       e.target.style.backgroundColor = "transparent"
-      if(e.target.name !== flippedOne){
-        setTimeout(function(){ e.target.style.backgroundColor = "black"; }, 3000)
+      var elem = document.getElementById(`${this.state.flippedOneID}`)
+      if(e.target.name !== flippedOneType){
+        setTimeout(function () { image.style.backgroundColor = "black" 
+        elem.style.backgroundColor = "black"; }, 2000)
         console.log('this ran')
+      }else { 
         this.setState({
-          flippedOne: ''
+          flippedOneType: '',
+          flippedOneID: '',
         })
       }
     }
@@ -44,7 +66,8 @@ class Concentration extends React.Component {
   }
 
   render() {
-    console.log('flipped one', this.state.flippedOne)
+    console.log('flipped one', this.state.flippedOneType)
+    console.log('flipped one id', this.state.flippedOneID)
     return (
       <div style={styles}>
         <h1>Concentration</h1>
