@@ -24,6 +24,11 @@
 }
 
 .image {
-  border: 10px solid white;
-  background-color: black;
+  width: 83px; 
+  height: 83px; 
+}
+
+.flipped { 
+  width: 83px; 
+  height: 83px; 
 }
