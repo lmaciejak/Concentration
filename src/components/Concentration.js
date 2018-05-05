@@ -53,40 +53,47 @@ class Concentration extends React.Component {
   }
 
   handleClick = (e) => { 
-    const { flippedOneType, flippedOneID } = this.state
+    const { flippedOneType, flippedOneID, flippedTwoID, flippedTwoType } = this.state
     console.log('e.target', e.target)
     const image = e.target
     const imageID = image.id
-    if(!flippedOneID){
+    if(flippedOneID && flippedTwoID){
+console.log('first ran')
+    }
+    else if(!flippedOneID){
       console.log('flippedONe is undefined')
       this.setState({
         [imageID]: 'flipped', 
         flippedOneID: imageID, 
         flippedOneType: image.name
       })
-    } else { 
-      console.log('setting image to flipped')
+    } else if(!flippedTwoID){
+      console.log('flipped two undefined')
       this.setState({
         [imageID]: 'flipped', 
+        flippedTwoID: imageID, 
+        flippedTwoType: image.name
+      }, () => { 
+        if(this.state.flippedTwoType === this.state.flippedOneType) { 
+          console.log('equal ran')
+        }else { 
+  console.log('images not equal')
+  setTimeout(function(){         
+    this.setState({
+    [imageID]: '', 
+    flippedOneID: '', 
+    flippedOneType: '', 
+    [flippedOneID]: '', 
+    flippedTwoID: '', 
+    flippedTwoType: '', 
+    [flippedTwoID]: ''
+  })}.bind(this), 2000);
+        }
       })
-      if(image.name !== flippedOneType){
-        console.log('r')
-        setTimeout(function(){         
-          this.setState({
-          [imageID]: '', 
-          flippedOneID: '', 
-          flippedOneType: '', 
-          [flippedOneID]: ''
-        })}.bind(this), 3000);
-      }
     }
   }
 
   render() {
-    console.log('flipped one type', this.state.flippedOneType)
-    console.log('flipped one id', this.state.flippedOneID)
-    console.log('rerendered')
-    console.log('props', this.state[this.props.iconArr[0].id])
     console.log('this.state', this.state)
     return (
       <div style={styles}>
