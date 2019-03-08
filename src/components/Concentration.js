@@ -127,7 +127,7 @@ class Concentration extends React.Component {
                 onClick={this.handleClick}
                 id={value.id}
                 name={value.type}
-                src={`https://raw.githubusercontent.com/C4Q/AC_4_Web/master/units/react/exercises/objects_and_arrays/cards/${
+                src={`https://raw.githubusercontent.com/joinpursuit/AC_4_Web/master/units/react/old/exercises/objects_and_arrays/cards/${
                   value.type
                 }.png`}
               />
