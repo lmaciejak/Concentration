@@ -87,7 +87,7 @@ class Concentration extends React.Component {
                   [flippedTwoID]: ""
                 });
               }.bind(this),
-              2000
+              500
             );
           }
         }
